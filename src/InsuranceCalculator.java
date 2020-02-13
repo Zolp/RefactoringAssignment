@@ -1,6 +1,6 @@
 public class InsuranceCalculator {
 
-    public double calculateInsurance(double income) {
+    double calculateInsurance(double income) {
         if (income <= 10000) {
             return income*0.365;
         } else if (income <= 30000) {
@@ -8,8 +8,22 @@ public class InsuranceCalculator {
         } else if (income <= 60000) {
             return (income-30000)*0.1+76500;
         } else {
-            return (income-60000)*0.02+105600;
+            return calculateInsuranceVeryHigh(income);
         }
+    }
+
+    private double calculateInsuranceVeryHigh(double income) {
+        return (income-60000)*0.02+105600;
+    }
+    public int getConstant() {
+        return 105600;
+    }
+
+    public double getWeight() {
+        return 0.02;
+    }
+    public int getAdjustment() {
+        return 60000;
     }
 
 }
